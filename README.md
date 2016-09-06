@@ -1,22 +1,26 @@
-Base on Poi
+#Base on Poi
 
-1.读取excel
+##1.读取excel
+
+```Java
 public static void main(final String[] args) throws IOException {
 	final Reader reader = SimpleReaderTemplate.newInstance();
 	final InputStream is = new FileInputStream(new File("D:/text.xls"));
 	final List<ESheet> sheets = reader.read(is);
 	for(final ESheet sheet: sheets){
-	    for(final ERow row: sheet.getRows()){
-	        for(final ECell cell: row.getCells()){
-	            System.out.print(cell);
-	            System.out.println("----"+cell.getValue().getClass());
-	        }
-	    }
+	for(final ERow row: sheet.getRows()){
+		for(final ECell cell: row.getCells()){
+			System.out.print(cell);
+			System.out.println("----"+cell.getValue().getClass());
+		}
+	}
 	}
 }
-  
+```
 
-2. write example1: 导出简单的excel，并且自己设置样式
+##2. write example1: 导出简单的excel，并且自己设置样式
+
+```Java
 public static void main(String[] args) {
 	final Test1Model header = new Test1Model(new Object[]{"周一","周二","周三","周四","周五","周六","周日"});
 	final List<Test1Model> body = new ArrayList<Test1Model>();
@@ -74,8 +78,10 @@ public static void main(String[] args) {
 		}
 	}
 }
-	
-3. example: 导出一页Page
+```	
+##3. example: 导出一页Page
+
+```Java
 public static void main(String[] args) {
 	String[] header = { "周一", "周二", "周三", "周四", "周五", "周六", "周日" };
       Test1Model h = new Test1Model(header);
@@ -117,8 +123,10 @@ public static void main(String[] args) {
 		}
 	}
 }
+```
+##4.导出多页
 
-4.导出多页
+```Java
 public static void main(String[] args) {
 	Pagers pagers = new Pagers();
 	for (int j = 0; j < 5; j++) {
@@ -168,8 +176,10 @@ public static void main(String[] args) {
 		}
 	}
 }
+```
+##5. 导出多个sheet
 
-5. 导出多个sheet
+```Java
 public static void main(final String[] args) throws IllegalAccessException, IOException {
     final EasyTemplate template = new SimpleTemplate();
     for(int j=0; j<3; j++){
@@ -191,8 +201,7 @@ public static void main(final String[] args) throws IllegalAccessException, IOEx
         sheet.addData(header, list);
         template.addSheet(sheet);
     }
-
     final FileOutputStream fos = new FileOutputStream("D:/text.xls");
     template.build(fos);
 }
-	
+```
