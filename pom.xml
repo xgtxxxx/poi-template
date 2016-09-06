@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>easyexcel</groupId>
-	<artifactId>easy-excel</artifactId>
+	<artifactId>poi-template</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
